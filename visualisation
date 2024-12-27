@@ -1,0 +1,31 @@
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('BTC-USD.csv')
+
+df['Date'] = pd.to_datetime(df['Date'])
+
+df['Year'] = df['Date'].dt.year
+df['Month'] = df['Date'].dt.month
+
+scaler = MinMaxScaler(feature_range=(-1, 1))
+cols_to_normalize = ['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+df[cols_to_normalize] = scaler.fit_transform(df[cols_to_normalize])
+
+monthly_data = df.groupby(['Year', 'Month'])[cols_to_normalize].mean().reset_index()
+
+monthly_data['Date'] = pd.to_datetime(
+    monthly_data['Year'].astype(str) + '-' + monthly_data['Month'].astype(str) + '-01'
+)
+monthly_data.set_index('Date', inplace=True)
+
+plt.figure(figsize=(12, 6))
+plt.plot(monthly_data.index, monthly_data['Open'], label='Open', color='blue')
+plt.plot(monthly_data.index, monthly_data['Close'], label='Close', color='orange')
+plt.title('Prix normalisés après regroupement mensuel')
+plt.xlabel('Date')
+plt.ylabel('Prix normalisé [-1, 1]')
+plt.legend()
+plt.grid()
+plt.show()
