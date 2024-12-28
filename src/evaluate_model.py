@@ -19,8 +19,8 @@ def evaluate_model(model_path, X_test_path, y_test_path):
     plt.ylabel("Prix normalisé")
     plt.legend()
     plt.grid()
-    plt.savefig("img/predictions_plot.png")
-    plt.show()
+    plt.savefig("img/predictions_plot.png")  # Sauvegarde
+    plt.close()  # Fermer la figure pour éviter les problèmes
 
 if __name__ == "__main__":
     evaluate_model(
