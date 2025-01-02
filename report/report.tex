@@ -58,4 +58,35 @@ The preprocessed data is divided into time windows to create input sequences for
 \subsection{Model Training}
 The LSTM model is built using the Keras library with TensorFlow as the backend. The model consists of two LSTM layers and two Dropout layers to prevent overfitting. The model is compiled with the Adam optimizer and mean squared error loss function. The training process involves fitting the model to the training data and saving the trained model and test data for evaluation.
 
+\section{Results}
+\subsection{Model Performance}
+The performance of the model was evaluated using the test data. The primary metric used for evaluation was the mean squared error (MSE) between the predicted and actual Bitcoin prices. The results indicate that the model was able to capture the general trend of Bitcoin prices, although there were some deviations.
+
+\subsection{Graphical Visualization}
+The real vs. predicted Bitcoin prices are visualized in the plot below. The plot provides a clear comparison between the actual prices and the model's predictions.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Prediction.png}
+    \caption{Real vs. Predicted Bitcoin Prices}
+    \label{fig:predictions}
+\end{figure}
+
+\section{Conclusions and Perspectives}
+\subsection{Summary of Findings}
+The LSTM model developed in this project was able to predict Bitcoin prices with a reasonable degree of accuracy. The model captured the overall trend of Bitcoin prices, although there were some discrepancies between the predicted and actual prices.
+
+\subsection{Future Work}
+Future work could involve exploring different model architectures and hyperparameters to improve the prediction accuracy. Additionally, incorporating more features such as trading volume and market sentiment could potentially enhance the model's performance.
+
+\section{Team Presentation}
+\subsection{Chantoiseau Sach}
+Role: Data Preprocessing and Model Training
+
+\subsection{Cherigui Allah Eddine}
+Role: Model Evaluation and Results Visualization
+
+\subsection{Louis Malmassary}
+Role: Report Writing and Project Coordination
+
 \end{document}

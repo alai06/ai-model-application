@@ -6,9 +6,11 @@ data/trained_model.h5
 data/X_test.npy
 data/y_test.npy
 
-report/rapport.log
-report/rapport.fls
-report/rapport.aux
-report/rapport.synctex.gz
-report/rapport.fdb_latexmk
 img/predictions_plot.png
+report/report.aux
+report/report.log
+report/report.fdb_latexmk
+report/report.fls
+report/report.synctex.gz
+report/report.toc
+report/report.out
