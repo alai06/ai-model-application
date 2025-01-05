@@ -51,12 +51,19 @@ The preprocessed data is then saved to a new CSV file for further analysis and m
 The methodology followed in this project involves several key steps:
 \subsection{Model Selection}
 Given the time series nature of the data, an LSTM (Long Short-Term Memory) neural network was chosen for the prediction task. LSTM models are well-suited for time series data as they can capture temporal dependencies and patterns.
+\includegraphics[width=0.2\textwidth]{img/model}
 
 \subsection{Data Preparation}
 The preprocessed data is divided into time windows to create input sequences for the LSTM model. Each time window consists of a fixed number of past observations used to predict the next value in the sequence. The data is then split into training and testing sets to evaluate the model's performance.
 
+We use the loadAndPreprocessData function to load a CSV file, process the date column to extract the year and month, normalize specific financial columns with MinMaxScaler, and group the data by year and month, calculating the mean for each group. It returns the monthly aggregated data with normalized values, indexed by date.
+
+\includegraphics[width=0.2\textwidth]{img/Capture d’écran 2025-01-05 200052.png}
 \subsection{Model Training}
 The LSTM model is built using the Keras library with TensorFlow as the backend. The model consists of two LSTM layers and two Dropout layers to prevent overfitting. The model is compiled with the Adam optimizer and mean squared error loss function. The training process involves fitting the model to the training data and saving the trained model and test data for evaluation.
+
+\includegraphics[width=0.2\textwidth]{img/evaluation.png}
+\includegraphics[width=0.2\textwidth]{img/Capture d’écran 2025-01-05 201711.png}
 
 \section{Results}
 \subsection{Model Performance}
