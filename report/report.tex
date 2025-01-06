@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{hyperref}
+\usepackage{caption} % Add this line
 
 \begin{document}
 
@@ -24,6 +25,7 @@
     \vspace*{\fill}
     \begin{flushleft}
         \includegraphics[width=0.2\textwidth]{img/UCA.png}
+        \captionof{figure}{University Logo} % Add this line
     \end{flushleft}
 \end{titlepage}
 
@@ -34,9 +36,11 @@
 \newpage
 
 \section{Introduction}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The goal of this project is to develop a predictive model for Bitcoin prices using machine learning techniques. Bitcoin, being a highly volatile cryptocurrency, presents a challenging task for accurate price prediction. The primary objective is to build a model that can predict future Bitcoin prices based on historical data, thereby providing insights and aiding in decision-making for investors and traders.
 
 \section{Data Set Description}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The data set used for this project consists of historical Bitcoin prices obtained from a publicly available source. The data includes daily prices of Bitcoin in USD, along with other relevant features such as the date. The data preprocessing steps involved the following:
 \begin{itemize}
     \item Reading the raw data from a CSV file.
@@ -48,52 +52,88 @@ The data set used for this project consists of historical Bitcoin prices obtaine
 The preprocessed data is then saved to a new CSV file for further analysis and model training.
 
 \section{Methodology}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The methodology followed in this project involves several key steps:
 \subsection{Model Selection}
+\noindent\rule{\textwidth}{1pt} % Add this line
 Given the time series nature of the data, an LSTM (Long Short-Term Memory) neural network was chosen for the prediction task. LSTM models are well-suited for time series data as they can capture temporal dependencies and patterns.
-\includegraphics[width=0.8\textwidth]{img/model}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/model}
+    \caption{LSTM Model Architecture} % Add this line
+    \label{fig:model}
+\end{figure}
 
 \subsection{Data Preparation}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The preprocessed data is divided into time windows to create input sequences for the LSTM model. Each time window consists of a fixed number of past observations used to predict the next value in the sequence. The data is then split into training and testing sets to evaluate the model's performance.
 
 We use the loadAndPreprocessData function to load a CSV file, process the date column to extract the year and month, normalize specific financial columns with MinMaxScaler, and group the data by year and month, calculating the mean for each group. It returns the monthly aggregated data with normalized values, indexed by date.
 
-\includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 200052.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 200052.png}
+    \caption{Data Preparation Process} % Add this line
+    \label{fig:data-preparation}
+\end{figure}
+
 \subsection{Model Training}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The LSTM model is built using the Keras library with TensorFlow as the backend. The model consists of two LSTM layers and two Dropout layers to prevent overfitting. The model is compiled with the Adam optimizer and mean squared error loss function. The training process involves fitting the model to the training data and saving the trained model and test data for evaluation.
 
-\includegraphics[width=0.8\textwidth]{img/evaluation.png}
-\includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 201711.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/evaluation.png}
+    \caption{Model Evaluation} % Add this line
+    \label{fig:evaluation}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 201711.png}
+    \caption{Training Process} % Add this line
+    \label{fig:training}
+\end{figure}
 
 \section{Results}
+\noindent\rule{\textwidth}{1pt} % Add this line
 \subsection{Model Performance}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The performance of the model was evaluated using the test data. The primary metric used for evaluation was the mean squared error (MSE) between the predicted and actual Bitcoin prices. The results indicate that the model was able to capture the general trend of Bitcoin prices, although there were some deviations.
 
 \subsection{Graphical Visualization}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The real vs. predicted Bitcoin prices are visualized in the plot below. The plot provides a clear comparison between the actual prices and the model's predictions.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{img/Prediction.png}
-    \caption{Real vs. Predicted Bitcoin Prices}
+    \caption{Real vs. Predicted Bitcoin Prices} % Add this line
     \label{fig:predictions}
 \end{figure}
 
 \section{Conclusions and Perspectives}
+\noindent\rule{\textwidth}{1pt} % Add this line
 \subsection{Summary of Findings}
+\noindent\rule{\textwidth}{1pt} % Add this line
 The LSTM model developed in this project was able to predict Bitcoin prices with a reasonable degree of accuracy. The model captured the overall trend of Bitcoin prices, although there were some discrepancies between the predicted and actual prices.
 
 \subsection{Future Work}
+\noindent\rule{\textwidth}{1pt} % Add this line
 Future work could involve exploring different model architectures and hyperparameters to improve the prediction accuracy. Additionally, incorporating more features such as trading volume and market sentiment could potentially enhance the model's performance.
 
 \section{Team Presentation}
+\noindent\rule{\textwidth}{1pt} % Add this line
 \subsection{Chantoiseau Sacha}
+\noindent\rule{\textwidth}{1pt} % Add this line
 Role: Data Preprocessing and Model Training
 
 \subsection{Cherigui Allah Eddine}
+\noindent\rule{\textwidth}{1pt} % Add this line
 Role: Model Evaluation and Results Visualization
 
 \subsection{Louis Malmassary}
+\noindent\rule{\textwidth}{1pt} % Add this line
 Role: Report Writing and Project Coordination
 
 \end{document}
