@@ -23,12 +23,25 @@ def train_model(data_path, model_save_path, X_test_save_path, y_test_save_path):
 
     # Construire et entraîner le modèle
     model = build_lstm_model(input_shape=(window_size, len(cols_to_use)))
-    model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=50, batch_size=32)
+    history = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=50, batch_size=32)
 
     # Sauvegarder le modèle et les ensembles
     model.save(model_save_path)
     np.save(X_test_save_path, X_test)
     np.save(y_test_save_path, y_test)
+
+    # Afficher les courbes d'entraînement
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=(12, 6))
+    plt.plot(history.history['loss'], label='Training Loss')
+    plt.plot(history.history['val_loss'], label='Validation Loss')
+    plt.title('Courbe de perte pendant l\'entraînement')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.grid()
+    plt.savefig("data/training_loss_plot.png")
+    plt.close()
 
 if __name__ == "__main__":
     train_model(

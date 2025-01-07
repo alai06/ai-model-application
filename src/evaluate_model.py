@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
+from sklearn.metrics import mean_squared_error, r2_score
 
 def evaluate_model(model_path, X_test_path, y_test_path):
     model = load_model(model_path)
@@ -9,6 +10,12 @@ def evaluate_model(model_path, X_test_path, y_test_path):
 
     # Faire des prédictions
     y_pred = model.predict(X_test)
+
+    # Calculer les métriques
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    print(f"MSE: {mse:.4f}")
+    print(f"R²: {r2:.4f}")
 
     # Visualiser les résultats
     plt.figure(figsize=(12, 6))
@@ -21,6 +28,14 @@ def evaluate_model(model_path, X_test_path, y_test_path):
     plt.grid()
     plt.savefig("img/predictions_plot.png")  # Sauvegarde
     plt.close()  # Fermer la figure pour éviter les problèmes
+
+    # Tracer les métriques
+    plt.figure(figsize=(8, 6))
+    plt.bar(['MSE', 'R²'], [mse, r2], color=['orange', 'blue'])
+    plt.title("Métriques d\'évaluation")
+    plt.ylabel("Valeur")
+    plt.savefig("img/metrics_plot.png")
+    plt.close()
 
 if __name__ == "__main__":
     evaluate_model(
