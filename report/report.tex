@@ -68,18 +68,18 @@ Given the time series nature of the data, an LSTM (Long Short-Term Memory) neura
 \noindent\rule{\textwidth}{1pt} % Add this line
 The preprocessed data is divided into time windows to create input sequences for the LSTM model. Each time window consists of a fixed number of past observations used to predict the next value in the sequence. The data is then split into training and testing sets to evaluate the model's performance.
 
-We use the loadAndPreprocessData function to load a CSV file, process the date column to extract the year and month, normalize specific financial columns with MinMaxScaler, and group the data by year and month, calculating the mean for each group. It returns the monthly aggregated data with normalized values, indexed by date.
+We use the \texttt{loadAndPreprocessData} function to load a CSV file, process the date column to extract the year and month, normalize specific financial columns with \texttt{MinMaxScaler}, and group the data by year and month, calculating the mean for each group. It returns the monthly aggregated data with normalized values, indexed by date.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 200052.png}
+    \includegraphics[width=0.8\textwidth]{img/Capture d\'\e9cran 2025-01-05 200052.png}
     \caption{Data Preparation Process} % Add this line
     \label{fig:data-preparation}
 \end{figure}
 
 \subsection{Model Training}
 \noindent\rule{\textwidth}{1pt} % Add this line
-The LSTM model is built using the Keras library with TensorFlow as the backend. The model consists of two LSTM layers and two Dropout layers to prevent overfitting. The model is compiled with the Adam optimizer and mean squared error loss function. The training process involves fitting the model to the training data and saving the trained model and test data for evaluation.
+The LSTM model is built using the Keras library with TensorFlow as the backend. The model consists of two LSTM layers and two Dropout layers to prevent overfitting. The model includes L2 regularization to improve generalization. It is compiled with the Adam optimizer and mean squared error loss function. The training process involves fitting the model to the training data and saving the trained model and test data for evaluation.
 
 \begin{figure}[h]
     \centering
@@ -90,7 +90,7 @@ The LSTM model is built using the Keras library with TensorFlow as the backend. 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/Capture d’écran 2025-01-05 201711.png}
+    \includegraphics[width=0.8\textwidth]{img/Capture d\'\e9cran 2025-01-05 201711.png}
     \caption{Training Process} % Add this line
     \label{fig:training}
 \end{figure}
@@ -99,7 +99,7 @@ The LSTM model is built using the Keras library with TensorFlow as the backend. 
 \noindent\rule{\textwidth}{1pt} % Add this line
 \subsection{Model Performance}
 \noindent\rule{\textwidth}{1pt} % Add this line
-The performance of the model was evaluated using the test data. The primary metric used for evaluation was the mean squared error (MSE) between the predicted and actual Bitcoin prices. The results indicate that the model was able to capture the general trend of Bitcoin prices, although there were some deviations.
+The performance of the model was evaluated using the test data. The primary metric used for evaluation was the mean squared error (MSE) between the predicted and actual Bitcoin prices. Additionally, the R\textsuperscript{2} metric was computed to assess the model's explanatory power. The results indicate that the model was able to capture the general trend of Bitcoin prices, although there were some deviations.
 
 \subsection{Graphical Visualization}
 \noindent\rule{\textwidth}{1pt} % Add this line
@@ -112,11 +112,22 @@ The real vs. predicted Bitcoin prices are visualized in the plot below. The plot
     \label{fig:predictions}
 \end{figure}
 
+\subsection{Metrics Comparison}
+\noindent\rule{\textwidth}{1pt} % Add this line
+The following plot compares the MSE and R\textsuperscript{2} metrics to evaluate the model's performance:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/metrics_plot.png}
+    \caption{Comparison of MSE and R\textsuperscript{2} Metrics} % Add this line
+    \label{fig:metrics}
+\end{figure}
+
 \section{Conclusions and Perspectives}
 \noindent\rule{\textwidth}{1pt} % Add this line
 \subsection{Summary of Findings}
 \noindent\rule{\textwidth}{1pt} % Add this line
 The LSTM model developed in this project was able to predict Bitcoin prices with a reasonable degree of accuracy. The model captured the overall trend of Bitcoin prices, although there were some discrepancies between the predicted and actual prices.
+\includegraphics[width=0.8\textwidth]{img/r_carre.png}
 
 \subsection{Future Work}
 \noindent\rule{\textwidth}{1pt} % Add this line
@@ -128,6 +139,7 @@ Future work could involve exploring different model architectures and hyperparam
 \noindent\rule{\textwidth}{1pt} % Add this line
 Role: Data Preprocessing and Model Training
 
+\includegraphics[width=0.8\textwidth]{img/courbe_perte.png}
 \subsection{Cherigui Allah Eddine}
 \noindent\rule{\textwidth}{1pt} % Add this line
 Role: Model Evaluation and Results Visualization
